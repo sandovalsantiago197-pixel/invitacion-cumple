@@ -32,7 +32,7 @@
             backdrop-filter: blur(10px);
             border: 2px solid #ff003c; 
             border-radius: 25px;
-            padding: 45px;
+            padding: 40px 45px;
             text-align: center;
             box-shadow:
                 0 0 20px #ff003c,
@@ -69,14 +69,57 @@
         .info {
             font-size: 21px;
             line-height: 1.8;
+            margin-bottom: 25px;
         }
 
         .info b {
             color: #ff003c;
         }
 
+        /* DISEÑO DE LA CUENTA REGRESIVA */
+        .countdown-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #cccccc;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .countdown-box {
+            background: rgba(255, 0, 60, 0.05);
+            border: 1px solid rgba(255, 0, 60, 0.4);
+            border-radius: 12px;
+            padding: 10px 15px;
+            min-width: 75px;
+            box-shadow: 0 0 10px rgba(255, 0, 60, 0.1);
+        }
+
+        .countdown-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff003c;
+            text-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
+            font-family: monospace;
+        }
+
+        .countdown-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #aaaaaa;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
         .frase {
-            margin-top: 30px;
+            margin-top: 25px;
             font-size: 20px;
             line-height: 1.6;
             color: #eeeeee;
@@ -95,10 +138,9 @@
             gap: 15px;
             justify-content: center;
             margin-top: 35px;
-            flex-wrap: wrap; /* Se adapta a celulares */
+            flex-wrap: wrap;
         }
 
-        /* Estilos base para los botones */
         .btn {
             flex: 1;
             min-width: 200px;
@@ -113,9 +155,9 @@
             align-items: center;
             justify-content: center;
             border: none;
+            gap: 8px;
         }
 
-        /* Botón Confirmar (WhatsApp rojo neón brillante) */
         .btn-confirmar {
             background: #ff003c;
             color: white;
@@ -133,7 +175,6 @@
                 0 0 40px #ff003c;
         }
 
-        /* Botón de Google Maps */
         .btn-maps {
             background: rgba(255, 0, 60, 0.1);
             color: white;
@@ -179,9 +220,26 @@
                 line-height: 1.6;
             }
 
+            .countdown-container {
+                gap: 8px;
+            }
+
+            .countdown-box {
+                min-width: 60px;
+                padding: 8px 10px;
+            }
+
+            .countdown-number {
+                font-size: 20px;
+            }
+
+            .countdown-label {
+                font-size: 9px;
+            }
+
             .frase {
                 font-size: 16px;
-                margin-top: 20px;
+                margin-top: 15px;
             }
 
             .frase strong {
@@ -189,7 +247,7 @@
             }
 
             .btn-container {
-                flex-direction: column; /* Botones en vertical para celular */
+                flex-direction: column;
                 gap: 12px;
                 margin-top: 25px;
             }
@@ -221,12 +279,34 @@
             Todo Chaguarquingo City 🍻
         </div>
 
+        <!-- SECCIÓN DE LA CUENTA REGRESIVA -->
+        <div class="countdown-title">Faltan solo:</div>
+        <div class="countdown-container" id="reloj">
+            <div class="countdown-box">
+                <div class="countdown-number" id="dias">00</div>
+                <div class="countdown-label">Días</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="horas">00</div>
+                <div class="countdown-label">Horas</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="minutos">00</div>
+                <div class="countdown-label">Min.</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-number" id="segundos">00</div>
+                <div class="countdown-label">Seg.</div>
+            </div>
+        </div>
+
         <div class="frase">
             Será un día lleno de <b>🍺 alcohol</b>, <b>🎵 música</b>, <b>🍗 comida</b> y muchas sorpresas.
             <br>
             <strong>😎 ¡No faltes! La fiesta no será la misma sin ti. 🎉</strong>
         </div>
 
+        <!-- BOTONES INTERACTIVOS -->
         <div class="btn-container">
             <a href="https://wa.me/593999978483?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20tu%20cumpleaños%20🍻🎉" target="_blank" class="btn btn-confirmar">
                 ✅ Confirmar asistencia
@@ -241,6 +321,35 @@
             Nos vemos en la mejor fiesta del año 🍻
         </footer>
     </div>
+
+    <!-- SCRIPT DE LA CUENTA REGRESIVA -->
+    <script>
+        // Fecha del evento: 25 de Julio del año actual a la 1:00 PM (13:00)
+        const fechaEvento = new Date('July 25, 2026 13:00:00').getTime();
+
+        const actualizarReloj = setInterval(() => {
+            const ahora = new Date().getTime();
+            const diferencia = fechaEvento - ahora;
+
+            // Cálculos de tiempo para días, horas, minutos y segundos
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+            // Mostrar el resultado en los contenedores correspondientes
+            document.getElementById('dias').innerHTML = dias < 10 ? '0' + dias : dias;
+            document.getElementById('horas').innerHTML = horas < 10 ? '0' + horas : horas;
+            document.getElementById('minutos').innerHTML = minutos < 10 ? '0' + minutos : minutos;
+            document.getElementById('segundos').innerHTML = segundos < 10 ? '0' + segundos : segundos;
+
+            // Si la cuenta regresiva termina
+            if (diferencia < 0) {
+                clearInterval(actualizarReloj);
+                document.getElementById('reloj').innerHTML = "<div style='font-size: 22px; font-weight: bold; color: #ff003c; text-shadow: 0 0 10px #ff003c; width: 100%; text-align: center; margin: 10px 0;'>🔥 ¡LA FIESTA YA EMPEZÓ! 🔥</div>";
+            }
+        }, 1000);
+    </script>
 
 </body>
 </html>
