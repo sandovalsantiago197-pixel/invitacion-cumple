@@ -95,7 +95,7 @@
             gap: 15px;
             justify-content: center;
             margin-top: 35px;
-            flex-wrap: wrap; /* Se adapta a móviles */
+            flex-wrap: wrap; /* Se adapta a celulares */
         }
 
         /* Estilos base para los botones */
@@ -115,7 +115,7 @@
             border: none;
         }
 
-        /* Botón Confirmar (Rojo neón brillante) */
+        /* Botón Confirmar (WhatsApp rojo neón brillante) */
         .btn-confirmar {
             background: #ff003c;
             color: white;
@@ -133,7 +133,7 @@
                 0 0 40px #ff003c;
         }
 
-        /* Botón de Google Maps (Borde rojo neón, fondo oscuro) */
+        /* Botón de Google Maps */
         .btn-maps {
             background: rgba(255, 0, 60, 0.1);
             color: white;
@@ -157,7 +157,7 @@
             letter-spacing: 2px;
         }
 
-        /* Ajustes adaptables móviles (Responsive) */
+        /* Ajustes adaptables móviles */
         @media (max-width: 480px) {
             .card {
                 padding: 30px 20px;
@@ -189,7 +189,7 @@
             }
 
             .btn-container {
-                flex-direction: column; /* Botones en vertical en celular */
+                flex-direction: column; /* Botones en vertical para celular */
                 gap: 12px;
                 margin-top: 25px;
             }
@@ -228,9 +228,9 @@
         </div>
 
         <div class="btn-container">
-            <button class="btn btn-confirmar" onclick="confirmar()">
+            <a href="https://wa.me/593999978483?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20tu%20cumpleaños%20🍻🎉" target="_blank" class="btn btn-confirmar">
                 ✅ Confirmar asistencia
-            </button>
+            </a>
             
             <a href="https://maps.app.goo.gl/ck7NZSxHhmWVUn4A9" target="_blank" class="btn btn-maps">
                 📍 Ver ubicación en Maps
@@ -241,12 +241,6 @@
             Nos vemos en la mejor fiesta del año 🍻
         </footer>
     </div>
-
-    <script>
-        function confirmar(){
-            alert("🥳 ¡Gracias por confirmar tu asistencia! 🍻🎉");
-        }
-    </script>
 
 </body>
 </html>
