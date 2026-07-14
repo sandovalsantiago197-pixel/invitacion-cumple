@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎉 Invitación de Cumpleaños 🎉</title>
+
     <style>
         * {
             margin: 0;
@@ -13,69 +14,40 @@
         }
 
         body {
-            /* FOND0 CON IMAGEN */
-            background-image: url('image_1.png'); /* Ruta a la imagen de brindis */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Efecto de fondo fijo */
+            /* Fondo negro puro con un sutil destello rojo oscuro en el centro */
+            background: radial-gradient(circle at center, #1a0005 0%, #000000 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+            min-height: 100vh; /* Permite que crezca si el contenido lo requiere */
+            padding: 20px; /* Margen de seguridad para pantallas móviles */
             color: white;
-            position: relative; /* Para superponer las luces */
-        }
-
-        /* Luces de fondo (mantenemos el concepto pero ajustamos la opacidad y posición) */
-        body::before {
-            content: "";
-            position: absolute;
-            width: 800px;
-            height: 800px;
-            background: rgba(124, 77, 255, 0.4); /* Púrpura de la copa */
-            filter: blur(250px);
-            opacity: 0.15;
-            top: -200px;
-            left: -150px;
-            z-index: 1; /* Detrás de la tarjeta */
-        }
-
-        body::after {
-            content: "";
-            position: absolute;
-            width: 700px;
-            height: 700px;
-            background: rgba(255, 215, 0, 0.4); /* Dorado del confeti */
-            filter: blur(250px);
-            opacity: 0.15;
-            bottom: -180px;
-            right: -100px;
-            z-index: 1; /* Detrás de la tarjeta */
         }
 
         .card {
             position: relative;
-            z-index: 10; /* Encima del fondo y luces */
-            width: 90%;
-            max-width: 650px;
-            background: rgba(10, 18, 30, 0.7); /* Fondo oscuro pero más transparente */
-            backdrop-filter: blur(18px); /* Desenfoque más intenso */
-            -webkit-backdrop-filter: blur(18px);
-            border: 2px solid #ffd700; /* Borde dorado */
-            border-radius: 30px;
-            padding: 50px;
+            z-index: 10;
+            width: 100%;
+            max-width: 600px;
+            background: rgba(10, 10, 10, 0.9); /* Fondo de la tarjeta casi negro */
+            backdrop-filter: blur(10px);
+            
+            /* NEÓN ROJO EN LOS BORDES */
+            border: 2px solid #ff003c; 
+            border-radius: 25px;
+            padding: 45px;
             text-align: center;
             box-shadow:
-                0 0 30px #ffd700, /* Sombra dorada */
-                0 0 60px rgba(255, 215, 0, 0.3);
-            animation: aparecer 1.5s ease-out; /* Animación más suave */
+                0 0 20px #ff003c,
+                0 0 40px rgba(255, 0, 60, 0.3);
+            
+            animation: aparecer 1.2s ease-out;
         }
 
         @keyframes aparecer {
             from {
                 opacity: 0;
-                transform: translateY(60px) scale(0.85);
+                transform: translateY(30px) scale(0.95);
             }
             to {
                 opacity: 1;
@@ -84,114 +56,156 @@
         }
 
         h1 {
-            font-size: 50px;
-            color: #ffd700; /* Texto dorado */
+            font-size: 42px;
+            color: #ff003c; /* Neón rojo */
             text-shadow:
-                0 0 10px #ffd700,
-                0 0 20px #ffd700,
-                0 0 40px #ffd700;
-            margin-bottom: 25px;
-            letter-spacing: 2px;
+                0 0 10px #ff003c,
+                0 0 25px #ff003c;
+            margin-bottom: 20px;
         }
 
         h2 {
             color: #ffffff;
-            margin-bottom: 35px;
-            font-size: 32px;
-            font-weight: 500;
+            margin-bottom: 30px;
+            font-size: 26px;
         }
 
         .info {
-            font-size: 24px;
-            line-height: 2.2;
-            margin-bottom: 30px;
+            font-size: 21px;
+            line-height: 1.8;
         }
 
         .info b {
-            color: #ffd700; /* Texto dorado resaltado */
-        }
-
-        /* Enfatizar la ubicación con un color de la copa azul */
-        .info span.lugar {
-            color: #00e5ff; /* El azul cian original para contraste */
-            font-weight: bold;
+            color: #ff003c; /* Resaltados en rojo */
         }
 
         .frase {
             margin-top: 30px;
-            font-size: 23px;
-            line-height: 1.9;
-            color: #f0f0f0;
+            font-size: 20px;
+            line-height: 1.6;
+            color: #eeeeee;
         }
 
         .frase strong {
             display: block;
             margin-top: 20px;
-            font-size: 26px;
-            color: #00e5ff; /* El azul cian original para contraste */
-            text-shadow: 0 0 10px #00e5ff;
+            color: #ff003c;
+            text-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
         }
 
         button {
-            margin-top: 40px;
-            background: #00e5ff; /* Fondo azul cian */
-            color: #001b2b;
+            margin-top: 35px;
+            background: #ff003c; /* Botón rojo neón */
+            color: white;
             border: none;
-            padding: 18px 45px;
-            border-radius: 45px;
-            font-size: 22px;
+            padding: 16px 40px;
+            border-radius: 40px;
+            font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            transition: .4s ease-in-out;
+            transition: .3s ease-in-out;
             box-shadow:
-                0 0 20px #00e5ff,
-                0 0 40px rgba(0, 229, 255, 0.4);
+                0 0 15px #ff003c,
+                0 0 30px rgba(255, 0, 60, 0.4);
         }
 
         button:hover {
-            transform: scale(1.1);
-            background: #ffd700; /* Fondo dorado al hacer hover */
-            color: #2b1f00; /* Texto oscuro para contraste */
+            transform: scale(1.05);
+            background: #ffffff;
+            color: #ff003c;
             box-shadow:
-                0 0 25px #ffd700,
-                0 0 50px #ffd700,
-                0 0 80px #ffd700;
+                0 0 20px #ffffff,
+                0 0 40px #ff003c;
         }
 
         footer {
-            margin-top: 40px;
-            color: #ffd700; /* Texto dorado */
-            font-size: 16px;
-            letter-spacing: 2.5px;
-            opacity: 0.8;
+            margin-top: 30px;
+            color: #cccccc;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        /* -------------------------------------------------------------
+           MÓVIL RESPONSIVE: Ajustes automáticos para pantallas pequeñas
+           ------------------------------------------------------------- */
+        @media (max-width: 480px) {
+            .card {
+                padding: 30px 20px; /* Menos espacio interno en celulares */
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 28px; /* Título más pequeño para que no se corte */
+                margin-bottom: 15px;
+            }
+
+            h2 {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            .info {
+                font-size: 16px; /* Texto de info adaptado */
+                line-height: 1.6;
+            }
+
+            .frase {
+                font-size: 16px;
+                margin-top: 20px;
+            }
+
+            .frase strong {
+                font-size: 17px;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 12px 30px;
+                margin-top: 25px;
+                width: 100%; /* Botón ancho completo en móviles para tocar fácil con el dedo */
+            }
+
+            footer {
+                font-size: 12px;
+                margin-top: 25px;
+            }
         }
     </style>
 </head>
+
 <body>
+
     <div class="card">
         <h1>🎉 ¡ESTÁS INVITADO! 🎉</h1>
         <h2>Ven a celebrar mi cumpleaños</h2>
+
         <div class="info">
             📅 <b>Sábado 25 de julio</b><br>
             🕐 <b>1:00 de la tarde</b><br>
             📍 <b>Lugar:</b><br>
-            <span class="lugar">Todo Chaguarquingo City</span> 🍻
+            Todo Chaguarquingo City 🍻
         </div>
+
         <div class="frase">
             Será un día lleno de <b>🍺 alcohol</b>, <b>🎵 música</b>, <b>🍗 comida</b> y muchas sorpresas.
+            <br>
             <strong>😎 ¡No faltes! La fiesta no será la misma sin ti. 🎉</strong>
         </div>
+
         <button onclick="confirmar()">
             ✅ Confirmar asistencia
         </button>
+
         <footer>
             Nos vemos en la mejor fiesta del año 🍻
         </footer>
     </div>
+
     <script>
-        function confirmar() {
+        function confirmar(){
             alert("🥳 ¡Gracias por confirmar tu asistencia! 🍻🎉");
         }
     </script>
+
 </body>
 </html>
