@@ -1,198 +1,197 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎉 Invitación de Cumpleaños 🎉</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Invitación de Cumpleaños 🎉</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-}
+        body {
+            /* FOND0 CON IMAGEN */
+            background-image: url('image_1.png'); /* Ruta a la imagen de brindis */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efecto de fondo fijo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+            position: relative; /* Para superponer las luces */
+        }
 
-body{
-    background:radial-gradient(circle at top,#16213e,#0f172a,#020617);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    overflow:hidden;
-    color:white;
-}
+        /* Luces de fondo (mantenemos el concepto pero ajustamos la opacidad y posición) */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: rgba(124, 77, 255, 0.4); /* Púrpura de la copa */
+            filter: blur(250px);
+            opacity: 0.15;
+            top: -200px;
+            left: -150px;
+            z-index: 1; /* Detrás de la tarjeta */
+        }
 
-/* Fondo con luces */
-body::before{
-    content:"";
-    position:absolute;
-    width:600px;
-    height:600px;
-    background:#00e5ff;
-    filter:blur(180px);
-    opacity:.18;
-    top:-200px;
-    left:-150px;
-}
+        body::after {
+            content: "";
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background: rgba(255, 215, 0, 0.4); /* Dorado del confeti */
+            filter: blur(250px);
+            opacity: 0.15;
+            bottom: -180px;
+            right: -100px;
+            z-index: 1; /* Detrás de la tarjeta */
+        }
 
-body::after{
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:#7c4dff;
-    filter:blur(180px);
-    opacity:.18;
-    bottom:-180px;
-    right:-100px;
-}
+        .card {
+            position: relative;
+            z-index: 10; /* Encima del fondo y luces */
+            width: 90%;
+            max-width: 650px;
+            background: rgba(10, 18, 30, 0.7); /* Fondo oscuro pero más transparente */
+            backdrop-filter: blur(18px); /* Desenfoque más intenso */
+            -webkit-backdrop-filter: blur(18px);
+            border: 2px solid #ffd700; /* Borde dorado */
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+            box-shadow:
+                0 0 30px #ffd700, /* Sombra dorada */
+                0 0 60px rgba(255, 215, 0, 0.3);
+            animation: aparecer 1.5s ease-out; /* Animación más suave */
+        }
 
-.card{
-    position:relative;
-    z-index:10;
-    width:90%;
-    max-width:620px;
-    background:rgba(15,23,42,.85);
-    backdrop-filter:blur(15px);
-    border:2px solid #00e5ff;
-    border-radius:25px;
-    padding:45px;
-    text-align:center;
-    box-shadow:
-    0 0 20px #00e5ff,
-    0 0 50px rgba(0,229,255,.3);
-    animation:aparecer 1.2s;
-}
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.85);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
 
-@keyframes aparecer{
-from{
-opacity:0;
-transform:translateY(40px) scale(.9);
-}
-to{
-opacity:1;
-transform:translateY(0) scale(1);
-}
-}
+        h1 {
+            font-size: 50px;
+            color: #ffd700; /* Texto dorado */
+            text-shadow:
+                0 0 10px #ffd700,
+                0 0 20px #ffd700,
+                0 0 40px #ffd700;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
 
-h1{
-    font-size:48px;
-    color:#00e5ff;
-    text-shadow:
-    0 0 10px #00e5ff,
-    0 0 25px #00e5ff,
-    0 0 50px #00e5ff;
-    margin-bottom:20px;
-}
+        h2 {
+            color: #ffffff;
+            margin-bottom: 35px;
+            font-size: 32px;
+            font-weight: 500;
+        }
 
-h2{
-    color:#ffffff;
-    margin-bottom:30px;
-    font-size:30px;
-}
+        .info {
+            font-size: 24px;
+            line-height: 2.2;
+            margin-bottom: 30px;
+        }
 
-.info{
-    font-size:23px;
-    line-height:2;
-}
+        .info b {
+            color: #ffd700; /* Texto dorado resaltado */
+        }
 
-.info b{
-    color:#00e5ff;
-}
+        /* Enfatizar la ubicación con un color de la copa azul */
+        .info span.lugar {
+            color: #00e5ff; /* El azul cian original para contraste */
+            font-weight: bold;
+        }
 
-.frase{
-    margin-top:30px;
-    font-size:22px;
-    line-height:1.8;
-    color:#eeeeee;
-}
+        .frase {
+            margin-top: 30px;
+            font-size: 23px;
+            line-height: 1.9;
+            color: #f0f0f0;
+        }
 
-button{
-    margin-top:35px;
-    background:#00e5ff;
-    color:#001b2b;
-    border:none;
-    padding:16px 40px;
-    border-radius:40px;
-    font-size:20px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.35s;
-    box-shadow:
-    0 0 15px #00e5ff,
-    0 0 35px #00e5ff;
-}
+        .frase strong {
+            display: block;
+            margin-top: 20px;
+            font-size: 26px;
+            color: #00e5ff; /* El azul cian original para contraste */
+            text-shadow: 0 0 10px #00e5ff;
+        }
 
-button:hover{
-    transform:scale(1.08);
-    background:#7c4dff;
-    color:white;
-    box-shadow:
-    0 0 15px #7c4dff,
-    0 0 40px #7c4dff,
-    0 0 70px #7c4dff;
-}
+        button {
+            margin-top: 40px;
+            background: #00e5ff; /* Fondo azul cian */
+            color: #001b2b;
+            border: none;
+            padding: 18px 45px;
+            border-radius: 45px;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .4s ease-in-out;
+            box-shadow:
+                0 0 20px #00e5ff,
+                0 0 40px rgba(0, 229, 255, 0.4);
+        }
 
-footer{
-    margin-top:30px;
-    color:#8ecae6;
-    font-size:15px;
-    letter-spacing:2px;
-}
-</style>
+        button:hover {
+            transform: scale(1.1);
+            background: #ffd700; /* Fondo dorado al hacer hover */
+            color: #2b1f00; /* Texto oscuro para contraste */
+            box-shadow:
+                0 0 25px #ffd700,
+                0 0 50px #ffd700,
+                0 0 80px #ffd700;
+        }
 
+        footer {
+            margin-top: 40px;
+            color: #ffd700; /* Texto dorado */
+            font-size: 16px;
+            letter-spacing: 2.5px;
+            opacity: 0.8;
+        }
+    </style>
 </head>
-
 <body>
-
-<div class="card">
-
-<h1>🎉 ¡ESTÁS INVITADO! 🎉</h1>
-
-<h2>Ven a celebrar mi cumpleaños</h2>
-
-<div class="info">
-
-📅 <b>Sábado 25 de julio</b><br>
-
-🕐 <b>1:00 de la tarde</b><br>
-
-📍 <b>Lugar:</b><br>
-
-Todo Chaguarquingo City 🍻
-
-</div>
-
-<div class="frase">
-
-Será un día lleno de <b>🍺 alcohol</b>, <b>🎵 música</b>, <b>🍗 comida</b> y muchas sorpresas.
-
-<br><br>
-
-<strong>😎 ¡No faltes! La fiesta no será la misma sin ti. 🎉</strong>
-
-</div>
-
-<button onclick="confirmar()">
-✅ Confirmar asistencia
-</button>
-
-<footer>
-Nos vemos en la mejor fiesta del año 🍻
-</footer>
-
-</div>
-
-<script>
-
-function confirmar(){
-
-alert("🥳 ¡Gracias por confirmar tu asistencia! 🍻🎉");
-
-}
-
-</script>
-
+    <div class="card">
+        <h1>🎉 ¡ESTÁS INVITADO! 🎉</h1>
+        <h2>Ven a celebrar mi cumpleaños</h2>
+        <div class="info">
+            📅 <b>Sábado 25 de julio</b><br>
+            🕐 <b>1:00 de la tarde</b><br>
+            📍 <b>Lugar:</b><br>
+            <span class="lugar">Todo Chaguarquingo City</span> 🍻
+        </div>
+        <div class="frase">
+            Será un día lleno de <b>🍺 alcohol</b>, <b>🎵 música</b>, <b>🍗 comida</b> y muchas sorpresas.
+            <strong>😎 ¡No faltes! La fiesta no será la misma sin ti. 🎉</strong>
+        </div>
+        <button onclick="confirmar()">
+            ✅ Confirmar asistencia
+        </button>
+        <footer>
+            Nos vemos en la mejor fiesta del año 🍻
+        </footer>
+    </div>
+    <script>
+        function confirmar() {
+            alert("🥳 ¡Gracias por confirmar tu asistencia! 🍻🎉");
+        }
+    </script>
 </body>
 </html>
