@@ -14,13 +14,12 @@
         }
 
         body {
-            /* Fondo negro puro con un sutil destello rojo oscuro en el centro */
             background: radial-gradient(circle at center, #1a0005 0%, #000000 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Permite que crezca si el contenido lo requiere */
-            padding: 20px; /* Margen de seguridad para pantallas móviles */
+            min-height: 100vh;
+            padding: 20px;
             color: white;
         }
 
@@ -29,10 +28,8 @@
             z-index: 10;
             width: 100%;
             max-width: 600px;
-            background: rgba(10, 10, 10, 0.9); /* Fondo de la tarjeta casi negro */
+            background: rgba(10, 10, 10, 0.9);
             backdrop-filter: blur(10px);
-            
-            /* NEÓN ROJO EN LOS BORDES */
             border: 2px solid #ff003c; 
             border-radius: 25px;
             padding: 45px;
@@ -40,7 +37,6 @@
             box-shadow:
                 0 0 20px #ff003c,
                 0 0 40px rgba(255, 0, 60, 0.3);
-            
             animation: aparecer 1.2s ease-out;
         }
 
@@ -57,7 +53,7 @@
 
         h1 {
             font-size: 42px;
-            color: #ff003c; /* Neón rojo */
+            color: #ff003c;
             text-shadow:
                 0 0 10px #ff003c,
                 0 0 25px #ff003c;
@@ -76,7 +72,7 @@
         }
 
         .info b {
-            color: #ff003c; /* Resaltados en rojo */
+            color: #ff003c;
         }
 
         .frase {
@@ -93,23 +89,42 @@
             text-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
         }
 
-        button {
+        /* CONTENEDOR DE BOTONES */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
             margin-top: 35px;
-            background: #ff003c; /* Botón rojo neón */
-            color: white;
-            border: none;
-            padding: 16px 40px;
+            flex-wrap: wrap; /* Se adapta a móviles */
+        }
+
+        /* Estilos base para los botones */
+        .btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 16px 25px;
             border-radius: 40px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
             transition: .3s ease-in-out;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+        }
+
+        /* Botón Confirmar (Rojo neón brillante) */
+        .btn-confirmar {
+            background: #ff003c;
+            color: white;
             box-shadow:
                 0 0 15px #ff003c,
                 0 0 30px rgba(255, 0, 60, 0.4);
         }
 
-        button:hover {
+        .btn-confirmar:hover {
             transform: scale(1.05);
             background: #ffffff;
             color: #ff003c;
@@ -118,24 +133,39 @@
                 0 0 40px #ff003c;
         }
 
+        /* Botón de Google Maps (Borde rojo neón, fondo oscuro) */
+        .btn-maps {
+            background: rgba(255, 0, 60, 0.1);
+            color: white;
+            border: 2px solid #ff003c;
+            box-shadow: 0 0 10px rgba(255, 0, 60, 0.2);
+        }
+
+        .btn-maps:hover {
+            transform: scale(1.05);
+            background: #ff003c;
+            color: white;
+            box-shadow:
+                0 0 20px #ff003c,
+                0 0 40px rgba(255, 0, 60, 0.6);
+        }
+
         footer {
-            margin-top: 30px;
+            margin-top: 40px;
             color: #cccccc;
             font-size: 14px;
             letter-spacing: 2px;
         }
 
-        /* -------------------------------------------------------------
-           MÓVIL RESPONSIVE: Ajustes automáticos para pantallas pequeñas
-           ------------------------------------------------------------- */
+        /* Ajustes adaptables móviles (Responsive) */
         @media (max-width: 480px) {
             .card {
-                padding: 30px 20px; /* Menos espacio interno en celulares */
+                padding: 30px 20px;
                 border-radius: 20px;
             }
 
             h1 {
-                font-size: 28px; /* Título más pequeño para que no se corte */
+                font-size: 28px;
                 margin-bottom: 15px;
             }
 
@@ -145,7 +175,7 @@
             }
 
             .info {
-                font-size: 16px; /* Texto de info adaptado */
+                font-size: 16px;
                 line-height: 1.6;
             }
 
@@ -158,16 +188,21 @@
                 font-size: 17px;
             }
 
-            button {
-                font-size: 16px;
-                padding: 12px 30px;
+            .btn-container {
+                flex-direction: column; /* Botones en vertical en celular */
+                gap: 12px;
                 margin-top: 25px;
-                width: 100%; /* Botón ancho completo en móviles para tocar fácil con el dedo */
+            }
+
+            .btn {
+                width: 100%;
+                font-size: 16px;
+                padding: 14px 20px;
             }
 
             footer {
                 font-size: 12px;
-                margin-top: 25px;
+                margin-top: 30px;
             }
         }
     </style>
@@ -192,9 +227,15 @@
             <strong>😎 ¡No faltes! La fiesta no será la misma sin ti. 🎉</strong>
         </div>
 
-        <button onclick="confirmar()">
-            ✅ Confirmar asistencia
-        </button>
+        <div class="btn-container">
+            <button class="btn btn-confirmar" onclick="confirmar()">
+                ✅ Confirmar asistencia
+            </button>
+            
+            <a href="https://maps.app.goo.gl/ck7NZSxHhmWVUn4A9" target="_blank" class="btn btn-maps">
+                📍 Ver ubicación en Maps
+            </a>
+        </div>
 
         <footer>
             Nos vemos en la mejor fiesta del año 🍻
